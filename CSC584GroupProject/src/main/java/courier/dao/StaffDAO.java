@@ -112,6 +112,55 @@ public class StaffDAO {
 			e.printStackTrace();		
 		}
 	}
+	
+	//add new dispatcher through admin (register)
+	public static void addDispatcher(Staff staff) throws NoSuchAlgorithmException{
+
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(staff.getStaffPassword().getBytes());
+		byte byteData[] = md.digest();
+
+		//convert the byte to hex format
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < byteData.length; i++) {
+			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+		}
+
+		try {
+			//call getConnection() method 
+			con = ConnectionManager.getConnection();
+			
+			//3. create statement  
+			sql = "INSERT INTO staff(staff_first_name,staff_last_name,staff_phone_number,staff_email,staff_address,staff_password,staff_role)VALUES(?,?,?,?,?,?,?)";
+			ps=con.prepareStatement(sql);
+			ps.setString(1,staff.getStaffFirstName());
+			ps.setString(2,staff.getStaffLastName());
+			ps.setString(3,staff.getStaffPhoneNumber());
+			ps.setString(4,staff.getStaffEmail());
+			ps.setString(5,staff.getStaffAddress());
+			ps.setString(6,sb.toString());
+			ps.setString(7,staff.getStaffRole());
+			
+			//4. execute query
+			ps.executeUpdate();
+			
+			System.out.print("Dispatcher added successfully");
+			
+			sql = "UPDATE staff SET dispatcher_status=?, dispatcher_employment_type=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1,staff.getDispatcher().getDispatcherStatus());
+			ps.setString(2,staff.getDispatcher().getEmploymentType());
+			
+			ps.executeUpdate();
+
+			
+			//5. close connection
+			con.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();		
+		}
+	}
 
 	//get staff
 	public static Staff getStaff(Staff staff)  {   
