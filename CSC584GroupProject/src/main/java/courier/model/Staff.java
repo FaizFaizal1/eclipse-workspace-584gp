@@ -15,6 +15,7 @@ public class Staff implements Serializable {
 	private Dispatcher dispatcher;
 	private Admin admin;
 	private boolean loggedIn;
+	private boolean isValid;
 	
 
 	public Staff() {
@@ -111,6 +112,14 @@ public class Staff implements Serializable {
 
 	public void setLoggedIn(boolean isLoggedIn) {
 		this.loggedIn = isLoggedIn;
+	}
+
+	public boolean isValid() {
+		return isValid;
+	}
+
+	public void setValid(boolean isValid) {
+		this.isValid = isValid;
 	}
 	
 	}

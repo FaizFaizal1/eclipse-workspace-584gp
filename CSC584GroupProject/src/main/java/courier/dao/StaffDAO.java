@@ -90,15 +90,14 @@ public class StaffDAO {
 			con = ConnectionManager.getConnection();
 			
 			//3. create statement  
-			sql = "INSERT INTO staff(staff_first_name,staff_last_name,staff_phone_number,staff_email,staff_address,staff_date_of_hire,staff_password)VALUES(?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO staff(staff_first_name,staff_last_name,staff_phone_number,staff_email,staff_address,staff_password)VALUES(?,?,?,?,?,?)";
 			ps=con.prepareStatement(sql);
 			ps.setString(1,staff.getStaffFirstName());
 			ps.setString(2,staff.getStaffLastName());
 			ps.setString(3,staff.getStaffPhoneNumber());
 			ps.setString(4,staff.getStaffEmail());
 			ps.setString(5,staff.getStaffAddress());
-			ps.setString(6,staff.getStaffDateOfHire());
-			ps.setString(7,sb.toString());
+			ps.setString(6,sb.toString());
 			
 			//4. execute query
 			ps.executeUpdate();			
