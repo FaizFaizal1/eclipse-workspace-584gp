@@ -50,7 +50,8 @@ public class RegisterController extends HttpServlet {
 		staff.setStaffPhoneNumber(request.getParameter("staff_phone_number"));		
 		staff.setStaffEmail(request.getParameter("staff_email"));		
 		staff.setStaffAddress(request.getParameter("staff_address"));		
-		staff.setStaffPassword(request.getParameter("staff_password"));		
+		staff.setStaffPassword(request.getParameter("staff_password"));
+		staff.setStaffRole(request.getParameter("staff_role"));
 
 		staff = StaffDAO.getStaff(staff);
 		

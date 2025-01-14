@@ -46,10 +46,15 @@
     <input type="password" class="form-control" id="staff_password" name="staff_password" placeholder="staff_password.." required>   
   </div>
   <div class="mb-3">
+    <label for="staff_role" class="form-label">staff_role</label> <br>   
+    <input type="radio" id="staff_role" name="staff_role" value="Dispatcher">Dispatcher
+    <input type="radio" id="staff_role" name="staff_role" value="Admin">Admin   
+  </div>
+  <div class="mb-3">
     <input type="submit" class="btn btn-primary" value="Submit"> 
     <input type="reset" class="btn btn-primary" value="Reset">  
   </div>
-  </form>
+</form>
 </div>
 </body>
 </html>

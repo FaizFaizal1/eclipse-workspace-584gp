@@ -12,6 +12,7 @@ public class Staff implements Serializable {
 	private String staffAddress;
 	private String staffDateOfHire;
 	private String staffPassword;
+	private String staffRole;
 	private Dispatcher dispatcher;
 	private Admin admin;
 	private boolean loggedIn;
@@ -84,6 +85,14 @@ public class Staff implements Serializable {
 
 	public void setStaffPassword(String staffPassword) {
 		this.staffPassword = staffPassword;
+	}
+
+	public String getStaffRole() {
+		return staffRole;
+	}
+
+	public void setStaffRole(String staffRole) {
+		this.staffRole = staffRole;
 	}
 
 	public static long getSerialversionuid() {
