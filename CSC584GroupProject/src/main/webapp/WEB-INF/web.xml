@@ -99,4 +99,14 @@
     <servlet-name>VehicleController</servlet-name>
     <url-pattern>/VehicleController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddDispatcherController</display-name>
+    <servlet-name>AddDispatcherController</servlet-name>
+    <servlet-class>courier.controller.AddDispatcherController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDispatcherController</servlet-name>
+    <url-pattern>/AddDispatcherController</url-pattern>
+  </servlet-mapping>
 </web-app>

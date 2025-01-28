@@ -47,30 +47,28 @@ public class AddDispatcherController extends HttpServlet {
 		Staff staff = new Staff();
 		Dispatcher dispatcher = new Dispatcher();
 		//retrieve input and set
-		staff.setStaffFirstName(request.getParameter("staff_first_name"));		
-		staff.setStaffLastName(request.getParameter("staff_last_name"));		
-		staff.setStaffPhoneNumber(request.getParameter("staff_phone_number"));		
-		staff.setStaffEmail(request.getParameter("staff_email"));		
-		staff.setStaffAddress(request.getParameter("staff_address"));		
-		staff.setStaffPassword(request.getParameter("staff_password"));
-		staff.setStaffRole(request.getParameter("staff_role"));
-		
-		dispatcher.setDispatcherStatus("dispatcher_employment_type");
+		staff.setStaffFirstName(request.getParameter("dispatcher_first_name"));		
+		staff.setStaffLastName(request.getParameter("dispatcher_last_name"));		
+		staff.setStaffPhoneNumber(request.getParameter("dispatcher_phone_number"));		
+		staff.setStaffEmail(request.getParameter("dispatcher_email"));		
+		staff.setStaffAddress(request.getParameter("dispatcher_address"));		
+		staff.setStaffPassword(request.getParameter("dispatcher_password"));
+		staff.setStaffRole(request.getParameter("dispatcher_role"));
+		dispatcher.setEmploymentType("dispatcher_employment_type");
 		staff.setDispatcher(dispatcher);
 
 		staff = StaffDAO.getStaff(staff);
 		
-		//check if staff exists
+		//check if dispatcher exists
 		if(!staff.isValid()){
 			try {
-				//if staff not exist, add/register the staff
-				StaffDAO.addDispatcher(staff);
+				//if dispatcher not exist, add/register the dispatcher
+				StaffDAO.addStaff(staff);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//redirect to dashboard.jsp
-			RequestDispatcher view = request.getRequestDispatcher("index.html"); // staff page
+			RequestDispatcher view = request.getRequestDispatcher("index.html"); // dispatcher page
 			view.forward(request, response);
 		}        
 	}

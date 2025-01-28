@@ -18,31 +18,6 @@ public class DispatcherDAO {
 	private static PreparedStatement ps = null;
 	private static String sql = null;
 
-	//add dispatcher
-	public static void addDispatcher(Dispatcher dispatcher){		
-		try {
-			//call getConnection() method
-			con = ConnectionManager.getConnection();
-
-			//3. create statement
-			sql = "INSERT INTO dispatcher(staffID,dispatcher_status,employment_type)VALUES(?,?,?)";
-			ps=con.prepareStatement(sql);
-			ps.setInt(1,dispatcher.getStaffID());
-			ps.setString(2,dispatcher.getDispatcherStatus());
-			ps.setString(3,dispatcher.getEmploymentType());
-
-			//4. execute query
-			ps.executeUpdate();
-			
-			System.out.print("Dispatcher added successfully");
-			
-			//5. close connection
-			con.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	//get all dispatchers
 	public static List<Dispatcher> getAllDispatchers() {
 		List<Dispatcher> dispatchers = new ArrayList<Dispatcher>(); 

@@ -5,7 +5,6 @@
   response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   response.addHeader("Cache-Control", "pre-check=0, post-check=0");
   response.setDateHeader("Expires", 0);
-  
   %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -20,7 +19,7 @@
 <br><br>
 <h3>Login</h3>
 <br><br>
-<form action="RegisterController" method="POST">
+<form action="AddDispatcherController" method="POST">
  <div class="mb-3">
     <label for="dispatcher_first_name" class="form-label">dispatcher_first_name</label>    
     <input type="text" class="form-control" id="dispatcher_first_name" name="dispatcher_first_name" placeholder="dispatcher_first_name.." required>   
@@ -46,17 +45,13 @@
     <input type="password" class="form-control" id="dispatcher_password" name="dispatcher_password" placeholder="dispatcher_password.." required>   
   </div>
   <div class="mb-3">
-    <label for="dispatcher_password" class="form-label">dispatcher_password</label>    
-    <input type="password" class="form-control" id="dispatcher_password" name="dispatcher_password" placeholder="dispatcher_password.." required>   
-  </div>
-  <div class="mb-3">
-    <label for="dispatcher_employment_type" class="form-label">dispatcher_role</label> <br>   
+    <label for="dispatcher_employment_type" class="form-label">dispatcher_employment_type</label> <br>   
     <input type="radio" id="dispatcher_employment_type" name="dispatcher_employment_type" value="Full-time">Full-time
     <input type="radio" id="dispatcher_employment_type" name="dispatcher_employment_type" value="Part-time">Part-time
   </div>
   <div class="mb-3">
-    <input type="hidden" id="dispatcher_role" name="dispatcher_role" value="Dispatcher">Dispatcher   
-  </div>
+    <input type="hidden" id="dispatcher_role" name="dispatcher_role" value="Dispatcher">   	
+  </div>  
   <div class="mb-3">
     <input type="submit" class="btn btn-primary" value="Submit"> 
     <input type="reset" class="btn btn-primary" value="Reset">  

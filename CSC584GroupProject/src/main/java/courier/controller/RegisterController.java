@@ -52,8 +52,6 @@ public class RegisterController extends HttpServlet {
 		staff.setStaffAddress(request.getParameter("staff_address"));		
 		staff.setStaffPassword(request.getParameter("staff_password"));
 		staff.setStaffRole(request.getParameter("staff_role"));
-
-		staff = StaffDAO.getStaff(staff);
 		
 		//check if staff exists
 		if(!staff.isValid()){
