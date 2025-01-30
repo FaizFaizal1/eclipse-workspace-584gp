@@ -6,7 +6,8 @@ public class Dispatcher implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int staffID; // use dispatcherID? example given by miss uses different ID name.
 	private String dispatcherStatus;
-	private String employmentType;
+	private String dispatcherEmploymentType;
+	private Staff staff;
 
 	public int getStaffID() {
 		return staffID;
@@ -24,12 +25,20 @@ public class Dispatcher implements Serializable {
 		this.dispatcherStatus = dispatcherStatus;
 	}
 
-	public String getEmploymentType() {
-		return employmentType;
+	public String getDispatcherEmploymentType() {
+		return dispatcherEmploymentType;
 	}
 
-	public void setEmploymentType(String employmentType) {
-		this.employmentType = employmentType;
+	public void setDispatcherEmploymentType(String dispatcherEmploymentType) {
+		this.dispatcherEmploymentType = dispatcherEmploymentType;
+	}
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
 
 	public static long getSerialversionuid() {

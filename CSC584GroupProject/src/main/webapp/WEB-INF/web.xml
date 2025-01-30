@@ -109,4 +109,14 @@
     <servlet-name>AddDispatcherController</servlet-name>
     <url-pattern>/AddDispatcherController</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>ListDispatcherController</display-name>
+    <servlet-name>ListDispatcherController</servlet-name>
+    <servlet-class>courier.controller.ListDispatcherController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListDispatcherController</servlet-name>
+    <url-pattern>/ListDispatcherController</url-pattern>
+  </servlet-mapping>
 </web-app>

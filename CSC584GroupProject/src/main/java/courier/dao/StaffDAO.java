@@ -123,7 +123,7 @@ public class StaffDAO {
 			sql = "UPDATE staff SET dispatcher_status=?, dispatcher_employment_type=? WHERE staffID=?";
 			ps=con.prepareStatement(sql);
 			ps.setString(1,staff.getDispatcher().getDispatcherStatus());
-			ps.setString(2,staff.getDispatcher().getEmploymentType());
+			ps.setString(2,staff.getDispatcher().getDispatcherEmploymentType());
 			ps.setInt(3,  staffId);
 			
 			ps.executeUpdate();
@@ -180,7 +180,7 @@ public class StaffDAO {
 	}
 	
 	//get staff by id
-	public static Staff getStaffById(String id) {
+	public static Staff getStaffById(int id) {
 		Staff staff = new Staff();
 		try {
 			//call getConnection() method 
@@ -189,7 +189,7 @@ public class StaffDAO {
 			//3. create statement  
 			sql = "SELECT * FROM staff WHERE staffID=?";
 			ps=con.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			
 			//execute statement
 			rs = ps.executeQuery();

@@ -26,7 +26,7 @@ public class DispatcherDAO {
 			con = ConnectionManager.getConnection();
 
 			//3. create statement
-			sql = "SELECT * FROM dispatcher ORDER BY staffID";
+			sql = "SELECT * FROM dispatcher d INNER JOIN staff s ON d.staffID = s.staffID";
 			ps = con.prepareStatement(sql);
 
 			//4. execute query
@@ -36,7 +36,9 @@ public class DispatcherDAO {
 				Dispatcher dispatcher = new Dispatcher();
 				dispatcher.setStaffID(rs.getInt("staffID"));	  
 				dispatcher.setDispatcherStatus(rs.getString("dispatcher_status"));
-				dispatcher.setEmploymentType(rs.getString("employment_type"));
+				dispatcher.setDispatcherEmploymentType(rs.getString("dispatcher_employment_type"));
+				dispatcher.setStaff(StaffDAO.getStaffById(rs.getInt("staffID")));
+				dispatchers.add(dispatcher);
 			} 
 			//5. close connection
 			con.close();
@@ -65,7 +67,7 @@ public class DispatcherDAO {
 			if (rs.next()) {	            
 				dispatcher.setStaffID(rs.getInt("staffID"));	  
 				dispatcher.setDispatcherStatus(rs.getString("dispatcher_status"));
-				dispatcher.setEmploymentType(rs.getString("employment_type"));
+				dispatcher.setDispatcherEmploymentType(rs.getString("dispatcher_employment_type"));
 			}
 
 			//5. close connection
@@ -111,7 +113,7 @@ public class DispatcherDAO {
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,dispatcher.getStaffID());
 			ps.setString(2,dispatcher.getDispatcherStatus());
-			ps.setString(3,dispatcher.getEmploymentType());
+			ps.setString(3,dispatcher.getDispatcherEmploymentType());
 
 			//4. execute query
 			ps.executeUpdate();
