@@ -41,7 +41,7 @@
     <input type="text" class="form-control" id="staff_address" name="staff_address" placeholder="staff_address.." required>   
   </div>
   <div class="mb-3">
-    <label for="staff_password" class="form-label">staff_password__${staffID}</label>    
+    <label for="staff_password" class="form-label">staff_password__${staffID}_${staff.staffRole}__${staff.staffID}</label>    
     <input type="password" class="form-control" id="staff_password" name="staff_password" placeholder="staff_password.." required>   
   </div>
   <div class="mb-3">

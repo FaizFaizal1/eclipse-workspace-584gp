@@ -50,7 +50,7 @@
     <input type="radio" id="dispatcher_status" name="dispatcher_status" value="Inactive">Inactive
   </div>
   <div class="mb-3">
-    <label for="dispatcher_employment_type" class="form-label">dispatcher_employment_type</label> <br>   
+    <label for="dispatcher_employment_type" class="form-label">dispatcher_employment_type_${staff.staffRole}</label> <br>   
     <input type="radio" id="dispatcher_employment_type" name="dispatcher_employment_type" value="Full-time">Full-time
     <input type="radio" id="dispatcher_employment_type" name="dispatcher_employment_type" value="Part-time">Part-time
   </div>

@@ -218,6 +218,7 @@ public class StaffDAO {
 				staff.setStaffAddress(rs.getString("staff_address"));
 				staff.setStaffDateOfHire(rs.getString("staff_date_of_hire"));
 				staff.setStaffPassword(rs.getString("staff_password"));
+				staff.setStaffRole(rs.getString("staff_role"));
 			}
 			//5. close connection
 			con.close();
