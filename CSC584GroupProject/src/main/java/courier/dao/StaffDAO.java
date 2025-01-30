@@ -341,6 +341,8 @@ public class StaffDAO {
 			
 			//4. execute query
 			ps.executeUpdate();
+			
+			System.out.println("Dispatcher with email " + email + " successfully deleted");
 
 			//5. close connection
 			con.close();
