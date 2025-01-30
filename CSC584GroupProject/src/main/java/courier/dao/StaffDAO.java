@@ -118,6 +118,18 @@ public class StaffDAO {
 		try {
 			con = ConnectionManager.getConnection();
 			
+			//convert the password to MD5
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(staff.getStaffPassword().getBytes());
+
+			byte byteData[] = md.digest();
+
+			//convert the byte to hex format
+			StringBuffer sb = new StringBuffer();
+			for (int i = 0; i < byteData.length; i++) {
+				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			
 			sql = "UPDATE staff SET staff_first_name=?, staff_last_name=?, staff_phone_number=?, staff_email=?, staff_address=?, staff_password=?, staff_role=? WHERE staffID=?";
 			ps=con.prepareStatement(sql);
 			ps.setString(1,staff.getStaffFirstName());
@@ -125,7 +137,7 @@ public class StaffDAO {
 			ps.setString(3,staff.getStaffPhoneNumber());
 			ps.setString(4,staff.getStaffEmail());
 			ps.setString(5,staff.getStaffAddress());
-			ps.setString(6,staff.getStaffPassword());
+			ps.setString(6,sb.toString());
 			ps.setString(7,staff.getStaffRole());
 			ps.setInt(8, staff.getStaffID());
 			
