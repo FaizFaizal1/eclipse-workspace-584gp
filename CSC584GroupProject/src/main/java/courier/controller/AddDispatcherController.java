@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import courier.dao.DispatcherDAO;
 import courier.dao.StaffDAO;
 import courier.model.Dispatcher;
 import courier.model.Staff;
@@ -47,28 +48,29 @@ public class AddDispatcherController extends HttpServlet {
 		Staff staff = new Staff();
 		Dispatcher dispatcher = new Dispatcher();
 		//retrieve input and set
-		staff.setStaffFirstName(request.getParameter("dispatcher_first_name"));		
-		staff.setStaffLastName(request.getParameter("dispatcher_last_name"));		
-		staff.setStaffPhoneNumber(request.getParameter("dispatcher_phone_number"));		
-		staff.setStaffEmail(request.getParameter("dispatcher_email"));		
-		staff.setStaffAddress(request.getParameter("dispatcher_address"));		
+		staff.setStaffFirstName(request.getParameter("dispatcher_first_name"));
+		staff.setStaffLastName(request.getParameter("dispatcher_last_name"));
+		staff.setStaffPhoneNumber(request.getParameter("dispatcher_phone_number"));
+		staff.setStaffEmail(request.getParameter("dispatcher_email"));
+		staff.setStaffAddress(request.getParameter("dispatcher_address"));
 		staff.setStaffPassword(request.getParameter("dispatcher_password"));
 		staff.setStaffRole(request.getParameter("dispatcher_role"));
 		dispatcher.setEmploymentType("dispatcher_employment_type");
-		staff.setDispatcher(dispatcher);
 
 		staff = StaffDAO.getStaff(staff);
-		
 		//check if dispatcher exists
 		if(!staff.isValid()){
 			try {
 				//if dispatcher not exist, add/register the dispatcher
 				StaffDAO.addStaff(staff);
+				staff = StaffDAO.getStaffByEmail("dispatcher_email");
+				staff.setDispatcher(dispatcher);
+				DispatcherDAO.updateDispatcher(staff.getDispatcher());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			//redirect to dashboard.jsp
-			RequestDispatcher view = request.getRequestDispatcher("index.html"); // dispatcher page
+
+			RequestDispatcher view = request.getRequestDispatcher("index.html");
 			view.forward(request, response);
 		}        
 	}

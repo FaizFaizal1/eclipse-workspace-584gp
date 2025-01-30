@@ -107,7 +107,7 @@ public class DispatcherDAO {
 			con = ConnectionManager.getConnection();
 
 			//3. create statement 
-			sql = "UPDATE dispatcher SET dispatcher_status=?, employment_type=? WHERE staffID=?";
+			sql = "UPDATE dispatcher SET dispatcher_status=?, dispatcher_employment_type=? WHERE staffID=?";
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,dispatcher.getStaffID());
 			ps.setString(2,dispatcher.getDispatcherStatus());
@@ -115,6 +115,8 @@ public class DispatcherDAO {
 
 			//4. execute query
 			ps.executeUpdate();
+			
+			System.out.println("Dispatcher added successfully");
 
 			//5. close connection
 			con.close();

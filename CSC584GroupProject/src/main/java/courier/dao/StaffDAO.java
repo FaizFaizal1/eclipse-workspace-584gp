@@ -103,7 +103,7 @@ public class StaffDAO {
 			//4. execute query
 			ps.executeUpdate();
 			
-			System.out.print("Staff added successfully");
+			System.out.println("Staff added successfully");
 			
 			//5. close connection
 			con.close();
@@ -115,44 +115,20 @@ public class StaffDAO {
 	
 	//add new dispatcher through admin (register)
 	public static void addDispatcher(Staff staff) throws NoSuchAlgorithmException{
-
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(staff.getStaffPassword().getBytes());
-		byte byteData[] = md.digest();
-
-		//convert the byte to hex format
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < byteData.length; i++) {
-			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-		}
-
 		try {
-			//call getConnection() method 
 			con = ConnectionManager.getConnection();
 			
-			//3. create statement  
-			sql = "INSERT INTO staff(staff_first_name,staff_last_name,staff_phone_number,staff_email,staff_address,staff_password,staff_role)VALUES(?,?,?,?,?,?,?)";
-			ps=con.prepareStatement(sql);
-			ps.setString(1,staff.getStaffFirstName());
-			ps.setString(2,staff.getStaffLastName());
-			ps.setString(3,staff.getStaffPhoneNumber());
-			ps.setString(4,staff.getStaffEmail());
-			ps.setString(5,staff.getStaffAddress());
-			ps.setString(6,sb.toString());
-			ps.setString(7,staff.getStaffRole());
+			int staffId = getStaff(staff).getStaffID();
 			
-			//4. execute query
-			ps.executeUpdate();
-			
-			System.out.print("Dispatcher added successfully");
-			
-			sql = "UPDATE staff SET dispatcher_status=?, dispatcher_employment_type=?";
+			sql = "UPDATE staff SET dispatcher_status=?, dispatcher_employment_type=? WHERE staffID=?";
 			ps=con.prepareStatement(sql);
 			ps.setString(1,staff.getDispatcher().getDispatcherStatus());
 			ps.setString(2,staff.getDispatcher().getEmploymentType());
+			ps.setInt(3,  staffId);
 			
 			ps.executeUpdate();
-
+			
+			System.out.print("Dispatcher added successfully");
 			
 			//5. close connection
 			con.close();
@@ -192,49 +168,14 @@ public class StaffDAO {
 			else{
 				staff.setLoggedIn(false);
 			}
+			
+			System.out.println("Staff found");
 			//5. close connection
 			con.close();	
 			
 		}catch(Exception e) {
 			e.printStackTrace();		
 		}
-		return staff;
-	}
-	
-	
-
-	//get staff by email
-	public static Staff getStaffByEmail(String email) {
-		Staff staff = new Staff();
-		try {
-			//call getConnection() method 
-			con = ConnectionManager.getConnection();
-			
-			//3. create statement  
-			sql = "SELECT * FROM staff WHERE staff_email=?";
-			ps=con.prepareStatement(sql);
-			ps.setString(1, email);
-			
-			//execute statement
-			rs = ps.executeQuery();
-
-			if (rs.next()) {	            
-				staff.setStaffID(rs.getInt("staffID"));
-				staff.setStaffFirstName(rs.getString("staff_first_name"));
-				staff.setStaffLastName(rs.getString("staff_last_name"));
-				staff.setStaffPhoneNumber(rs.getString("staff_phone_number"));
-				staff.setStaffEmail(rs.getString("staff_email"));
-				staff.setStaffAddress(rs.getString("staff_address"));
-				staff.setStaffDateOfHire(rs.getString("staff_date_of_hire"));
-				staff.setStaffPassword(rs.getString("staff_password"));
-			}
-			//5. close connection
-			con.close();
-			
-		}catch(Exception e) {
-			e.printStackTrace();		
-		}
-
 		return staff;
 	}
 	
@@ -263,6 +204,43 @@ public class StaffDAO {
 				staff.setStaffDateOfHire(rs.getString("staff_date_of_hire"));
 				staff.setStaffPassword(rs.getString("staff_password"));
 			}
+			//5. close connection
+			con.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();		
+		}
+
+		return staff;
+	}
+	
+	//get staff by email
+	public static Staff getStaffByEmail(String email) {
+		Staff staff = new Staff();
+		try {
+			//call getConnection() method 
+			con = ConnectionManager.getConnection();
+			
+			//3. create statement  
+			sql = "SELECT * FROM staff WHERE staff_email=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1, email);
+			
+			//execute statement
+			rs = ps.executeQuery();
+
+			if (rs.next()) {	            
+				staff.setStaffID(rs.getInt("staffID"));
+				staff.setStaffFirstName(rs.getString("staff_first_name"));
+				staff.setStaffLastName(rs.getString("staff_last_name"));
+				staff.setStaffPhoneNumber(rs.getString("staff_phone_number"));
+				staff.setStaffEmail(rs.getString("staff_email"));
+				staff.setStaffAddress(rs.getString("staff_address"));
+				staff.setStaffDateOfHire(rs.getString("staff_date_of_hire"));
+				staff.setStaffPassword(rs.getString("staff_password"));
+			}
+			
+			System.out.println("Staff with email " + email + " found");
 			//5. close connection
 			con.close();
 			

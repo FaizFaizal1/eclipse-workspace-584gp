@@ -41,7 +41,6 @@
     <input type="text" class="form-control" id="dispatcher_address" name="dispatcher_address" placeholder="dispatcher_address.." required>   
   </div>
   <div class="mb-3">
-  
     <label for="dispatcher_password" class="form-label">dispatcher_password</label>    
     <input type="password" class="form-control" id="dispatcher_password" name="dispatcher_password" placeholder="dispatcher_password.." required>   
   </div>
@@ -52,7 +51,7 @@
   </div>
   <div class="mb-3">
     <input type="hidden" id="dispatcher_role" name="dispatcher_role" value="Dispatcher">   	
-  </div>  
+  </div>
   <div class="mb-3">
     <input type="submit" class="btn btn-primary" value="Submit"> 
     <input type="reset" class="btn btn-primary" value="Reset">  
