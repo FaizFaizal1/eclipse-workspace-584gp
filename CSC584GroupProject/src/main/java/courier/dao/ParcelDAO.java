@@ -50,6 +50,7 @@ public class ParcelDAO {
 		try { 
 			//call getConnection() method
 			con = ConnectionManager.getConnection();
+			System.out.println("getAllParcels");
 
 			//3. create statement
 			sql = "SELECT * FROM parcel ORDER BY parcelID";
@@ -69,6 +70,7 @@ public class ParcelDAO {
 				parcels.add(parcel);
 
 			} 
+			System.out.println("getAllParcels finish");
 			//5. close connection
 			con.close();
 

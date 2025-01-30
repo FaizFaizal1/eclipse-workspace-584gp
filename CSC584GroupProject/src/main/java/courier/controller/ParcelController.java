@@ -1,5 +1,6 @@
 package courier.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -7,11 +8,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import courier.dao.ParcelDAO;
+
 /**
  * Servlet implementation class ParcelController
  */
 public class ParcelController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private RequestDispatcher view;
+	private int parcelID;
+	private String action="", forward="";
+	private static String LIST = "scansort.jsp";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,7 +33,17 @@ public class ParcelController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		action = request.getParameter("action");
+
+		//view all parcels
+		if(action.equalsIgnoreCase("listParcels")) {
+			System.out.println("LIST");
+			forward = LIST;
+			request.setAttribute("parcels", ParcelDAO.getAllParcels());        
+		}		
+
+		view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
 	}
 
 	/**
