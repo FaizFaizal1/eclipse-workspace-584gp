@@ -51,7 +51,7 @@
     <input type="radio" id="dispatcher_employment_type" name="dispatcher_employment_type" value="Part-time">Part-time
   </div>
   <div class="mb-3">
-    <input type="hidden" id="dispatcher_role" name="dispatcher_role" value="Dispatcher">   	
+    <input type="hidden" id="staff_role" name="staff_role" value="Dispatcher">   	
   </div>  
   <div class="mb-3">
     <input type="submit" class="btn btn-primary" value="Submit"> 

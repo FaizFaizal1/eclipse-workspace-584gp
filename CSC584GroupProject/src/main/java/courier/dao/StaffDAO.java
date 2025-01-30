@@ -329,15 +329,15 @@ public class StaffDAO {
 		}
 		
 	//delete staff and courier from table staffs
-	public static void deleteStaff(int id) {
+	public static void deleteStaff(String email) {
 		try {
 			//call getConnection() method 
 			con = ConnectionManager.getConnection();
 			
 			//3. create statement 
-			sql = "DELETE FROM staff WHERE staffID=?";
+			sql = "DELETE FROM staff WHERE staff_email=?";
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setString(1, email);
 			
 			//4. execute query
 			ps.executeUpdate();
