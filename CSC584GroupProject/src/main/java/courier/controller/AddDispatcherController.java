@@ -55,7 +55,7 @@ public class AddDispatcherController extends HttpServlet {
 		staff.setStaffAddress(request.getParameter("dispatcher_address"));
 		staff.setStaffPassword(request.getParameter("dispatcher_password"));
 		staff.setStaffRole(request.getParameter("dispatcher_role"));
-		dispatcher.setEmploymentType("dispatcher_employment_type");
+		dispatcher.setDispatcherEmploymentType("dispatcher_employment_type");
 
 		staff = StaffDAO.getStaff(staff);
 		//check if dispatcher exists

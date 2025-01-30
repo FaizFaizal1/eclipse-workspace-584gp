@@ -63,7 +63,8 @@ public class LoginController extends HttpServlet {
 	            session.setAttribute("sessionEmail", staff.getStaffEmail());//set current session based on email
 
 	            // Redirect to avoid resubmission
-	            response.sendRedirect("index.jsp");
+	            request.setAttribute("staffID", request.getParameter("staffID"));
+	            request.getRequestDispatcher("index.jsp").forward(request, response);
 	        } else {
 	        	System.out.println("staff else");
 	            //response.sendRedirect("invalidLogin.jsp");

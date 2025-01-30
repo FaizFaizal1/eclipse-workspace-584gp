@@ -86,7 +86,7 @@ if (session == null || session.getAttribute("sessionEmail") == null) {
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="ListDispatcherController" class="dropdown-item">Manage Dispatcher</a> <!-- button.html -->
                             <a href="add_dispatcher.html" class="dropdown-item">Add Dispatcher</a> <!-- typography.html -->
-                            <a href="upd_dispatcher.html" class="dropdown-item">Update Dispatcher</a> <!-- element.html -->
+                            <a href="SendStaffIDController?staffID=${staffID}" class="dropdown-item">Update Staff</a> <!-- element.html -->
                             <a href="del_dispatcher.html" class="dropdown-item">Delete Dispatcher</a> <!-- element.html -->
                         </div>
                     </div>

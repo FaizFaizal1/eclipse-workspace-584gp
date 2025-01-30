@@ -114,21 +114,24 @@ public class StaffDAO {
 	}
 	
 	//add new dispatcher through admin (register)
-	public static void addDispatcher(Staff staff) throws NoSuchAlgorithmException{
+	public static void updateStaff(Staff staff) throws NoSuchAlgorithmException{
 		try {
 			con = ConnectionManager.getConnection();
 			
-			int staffId = getStaff(staff).getStaffID();
-			
-			sql = "UPDATE staff SET dispatcher_status=?, dispatcher_employment_type=? WHERE staffID=?";
+			sql = "UPDATE staff SET staff_first_name=?, staff_last_name=?, staff_phone_number=?, staff_email=?, staff_address=?, staff_password=?, staff_role=? WHERE staffID=?";
 			ps=con.prepareStatement(sql);
-			ps.setString(1,staff.getDispatcher().getDispatcherStatus());
-			ps.setString(2,staff.getDispatcher().getDispatcherEmploymentType());
-			ps.setInt(3,  staffId);
+			ps.setString(1,staff.getStaffFirstName());
+			ps.setString(2,staff.getStaffLastName());
+			ps.setString(3,staff.getStaffPhoneNumber());
+			ps.setString(4,staff.getStaffEmail());
+			ps.setString(5,staff.getStaffAddress());
+			ps.setString(6,staff.getStaffPassword());
+			ps.setString(7,staff.getStaffRole());
+			ps.setInt(8, staff.getStaffID());
 			
 			ps.executeUpdate();
 			
-			System.out.print("Dispatcher added successfully");
+			System.out.print("Staff updated successfully");
 			
 			//5. close connection
 			con.close();
