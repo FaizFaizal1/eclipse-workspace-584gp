@@ -19,7 +19,7 @@
 <br><br>
 <h3>Login</h3>
 <br><br>
-<form action="AddDispatcherController" method="POST">
+<form action="UpdateDispatcherController" method="POST">
  <div class="mb-3">
     <label for="dispatcher_first_name" class="form-label">dispatcher_first_name</label>    
     <input type="text" class="form-control" id="dispatcher_first_name" name="dispatcher_first_name" placeholder="dispatcher_first_name.." required>   
@@ -33,16 +33,21 @@
     <input type="text" class="form-control" id="dispatcher_phone_number" name="dispatcher_phone_number" placeholder="dispatcher_phone_number.." required>   
   </div>
  <div class="mb-3">
-    <label for="dispatcher_email" class="form-label">dispatcher_email</label>    
-    <input type="email" class="form-control" id="dispatcher_email" name="dispatcher_email" placeholder="dispatcher_email.." required>   
-  </div>
- <div class="mb-3">
     <label for="dispatcher_address" class="form-label">dispatcher_address</label>    
     <input type="text" class="form-control" id="dispatcher_address" name="dispatcher_address" placeholder="dispatcher_address.." required>   
+  </div>
+ <div class="mb-3">
+    <label for="dispatcher_email" class="form-label">dispatcher_email</label>    
+    <input type="email" class="form-control" id="dispatcher_email" name="dispatcher_email" placeholder="dispatcher_email.." required>   
   </div>
   <div class="mb-3">
     <label for="dispatcher_password" class="form-label">dispatcher_password</label>    
     <input type="password" class="form-control" id="dispatcher_password" name="dispatcher_password" placeholder="dispatcher_password.." required>   
+  </div>
+  <div class="mb-3">
+    <label for="dispatcher_status" class="form-label">dispatcher_status_${staff.staffID}</label> <br>   
+    <input type="radio" id="dispatcher_status" name="dispatcher_status" value="Active">Active
+    <input type="radio" id="dispatcher_status" name="dispatcher_status" value="Inactive">Inactive
   </div>
   <div class="mb-3">
     <label for="dispatcher_employment_type" class="form-label">dispatcher_employment_type</label> <br>   
@@ -50,7 +55,10 @@
     <input type="radio" id="dispatcher_employment_type" name="dispatcher_employment_type" value="Part-time">Part-time
   </div>
   <div class="mb-3">
-    <input type="hidden" id="dispatcher_role" name="dispatcher_role" value="Dispatcher">   	
+    <input type="hidden" id="staffID" name="staffID" value="${staff.staffID}">
+  </div>
+  <div class="mb-3">
+    <input type="hidden" id="staff_role" name="staff_role" value="${staff.staffRole}">   	
   </div>
   <div class="mb-3">
     <input type="submit" class="btn btn-primary" value="Submit"> 

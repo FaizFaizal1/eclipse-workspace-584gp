@@ -111,14 +111,14 @@ public class DispatcherDAO {
 			//3. create statement 
 			sql = "UPDATE dispatcher SET dispatcher_status=?, dispatcher_employment_type=? WHERE staffID=?";
 			ps=con.prepareStatement(sql);
-			ps.setInt(1,dispatcher.getStaffID());
-			ps.setString(2,dispatcher.getDispatcherStatus());
-			ps.setString(3,dispatcher.getDispatcherEmploymentType());
+			ps.setString(1,dispatcher.getDispatcherStatus());
+			ps.setString(2,dispatcher.getDispatcherEmploymentType());
+			ps.setInt(3,dispatcher.getStaffID());
 
 			//4. execute query
 			ps.executeUpdate();
 			
-			System.out.println("Dispatcher added successfully");
+			System.out.println("Dispatcher table updated successfully");
 
 			//5. close connection
 			con.close();

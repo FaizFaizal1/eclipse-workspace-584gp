@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import courier.dao.StaffDAO;
+import courier.model.Staff;
+
 /**
  * Servlet implementation class SendStaffIDController
  */
@@ -28,8 +31,10 @@ public class SendStaffIDController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("staffID", request.getParameter("staffID"));
-		RequestDispatcher view = request.getRequestDispatcher("updateStaff.jsp");
+		int staffID = Integer.parseInt(request.getParameter("staffID"));
+
+		request.setAttribute("staff", StaffDAO.getStaffById(staffID));
+		RequestDispatcher view = request.getRequestDispatcher("updateDispatcher.jsp"); //updateStaff.jsp old
         view.forward(request, response);
 	}
 

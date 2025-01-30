@@ -131,7 +131,7 @@ public class StaffDAO {
 			
 			ps.executeUpdate();
 			
-			System.out.print("Staff updated successfully");
+			System.out.print("Staff table updated successfully");
 			
 			//5. close connection
 			con.close();
