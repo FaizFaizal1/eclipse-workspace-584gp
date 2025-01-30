@@ -50,6 +50,7 @@ public class LoginController extends HttpServlet {
 			//retrieve and set email and password
 			staff.setStaffID(Integer.parseInt(request.getParameter("staffID")));
 			staff.setStaffPassword(request.getParameter("staff_password"));
+			staff.setStaffEmail(request.getParameter("staff_email"));
 
 			//call courier() in StaffDAO
 			staff = StaffDAO.login(staff);
@@ -58,11 +59,11 @@ public class LoginController extends HttpServlet {
 			if (staff.isLoggedIn()) {
 				System.out.println("staff");
 	            HttpSession session = request.getSession(true);
-	            session.setAttribute("staffID", staff.getStaffID());
-	            session.setAttribute("staff_password", staff.getStaffPassword());//set current session based on email
+	            session.setAttribute("sessionId", staff.getStaffID());
+	            session.setAttribute("sessionEmail", staff.getStaffEmail());//set current session based on email
 
 	            // Redirect to avoid resubmission
-	            response.sendRedirect("index.html");
+	            response.sendRedirect("index.jsp");
 	        } else {
 	        	System.out.println("staff else");
 	            //response.sendRedirect("invalidLogin.jsp");
