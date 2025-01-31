@@ -113,7 +113,6 @@ public class StaffDAO {
 		}
 	}
 	
-	//add new dispatcher through admin (register)
 	public static void updateStaff(Staff staff) throws NoSuchAlgorithmException{
 		try {
 			con = ConnectionManager.getConnection();

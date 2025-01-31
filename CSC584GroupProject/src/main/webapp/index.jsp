@@ -88,6 +88,7 @@ if (session == null || session.getAttribute("sessionEmail") == null) {
                             <a href="addDispatcher.jsp" class="dropdown-item">Add Dispatcher</a> <!-- typography.html -->
                             <a href="SendStaffIDController?staffID=${staffID}" class="dropdown-item">Update Staff</a> <!-- element.html -->
                             <a href="SendStaffIDController?staffID=${staffID}" class="dropdown-item">Update Dispatcher</a> <!-- element.html -->
+                            <a href="AdminController?action=updateProfile&staffID=${staffID}" class="dropdown-item">Update Admin</a> <!-- element.html -->
                             <a href="del_dispatcher.html" class="dropdown-item">Delete Dispatcher</a> <!-- element.html -->
                         </div>
                     </div>

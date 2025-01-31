@@ -66,6 +66,7 @@ public class AdminDAO {
 				admin.setStaffID(rs.getInt("staffID"));
 				admin.setAdminRole(rs.getString("admin_role"));
 			}
+			
 			// 5. close connection
 			con.close();
 
@@ -85,13 +86,15 @@ public class AdminDAO {
 			con = ConnectionManager.getConnection();
 
 			// 3. create statement
-			sql = "UPDATE admin SET staffID=?,admin_role=? WHERE staffID=?";
+			sql = "UPDATE admin SET admin_role=? WHERE staffID=?";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, admin.getStaffID());
-			ps.setString(2, admin.getAdminRole());
+			ps.setString(1, admin.getAdminRole());
+			ps.setInt(2, admin.getStaffID());
 
 			// 4. execute query
 			ps.executeUpdate();
+			
+			System.out.println("Admin table successfully updated");
 
 			// 5. close connection
 			con.close();

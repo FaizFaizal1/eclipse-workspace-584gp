@@ -139,4 +139,13 @@
     <servlet-name>DeleteDispatcherController</servlet-name>
     <url-pattern>/DeleteDispatcherController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>AdminController</display-name>
+    <servlet-name>AdminController</servlet-name>
+    <servlet-class>courier.controller.AdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminController</servlet-name>
+    <url-pattern>/AdminController</url-pattern>
+  </servlet-mapping>
 </web-app>
